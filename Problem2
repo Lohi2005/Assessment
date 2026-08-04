@@ -1,0 +1,45 @@
+import sys
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def add_two_numbers():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    n = int(input_data[0])
+    l1_vals = [int(x) for x in input_data[1:n+1]]
+    
+    m = int(input_data[n+1])
+    l2_vals = [int(x) for x in input_data[n+2:n+2+m]]
+
+    dummy = ListNode(0)
+    curr = dummy
+    carry = 0
+    i, j = 0, 0
+
+    while i < n or j < m or carry:
+        val1 = l1_vals[i] if i < n else 0
+        val2 = l2_vals[j] if j < m else 0
+
+        total = val1 + val2 + carry
+        carry = total // 10
+        curr.next = ListNode(total % 10)
+        curr = curr.next
+
+        i += 1
+        j += 1
+
+    result = []
+    curr = dummy.next
+    while curr:
+        result.append(str(curr.val))
+        curr = curr.next
+
+    print(" ".join(result))
+
+if __name__ == '__main__':
+    add_two_numbers()
