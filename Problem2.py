@@ -1,5 +1,4 @@
 import sys
-
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -30,8 +29,8 @@ def add_two_numbers():
         curr.next = ListNode(total % 10)
         curr = curr.next
 
-        i += 1
-        j += 1
+        i =i+1
+        j =j+1
 
     result = []
     curr = dummy.next
